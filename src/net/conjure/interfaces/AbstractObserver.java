@@ -15,15 +15,18 @@
  */
 package net.conjure.interfaces;
 
-public abstract class AbstractFacade {
+public class AbstractObserver {
+	// /////////////////////////////////////////////////////////////////////////
+	//
+	//	Static variables
+	//
+	// /////////////////////////////////////////////////////////////////////////
+
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Instance variables
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	protected AbstractModel model;
-	protected AbstractView view;
-	protected AbstractController controller;
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
@@ -42,23 +45,5 @@ public abstract class AbstractFacade {
 	//	Accessors & factories
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	protected synchronized final AbstractModel getModel() {
-		return this.model;
-	}
-	protected synchronized final void setModel(AbstractModel model) {
-		this.model = model;
-	}
-	protected synchronized final AbstractView getView() {
-		return this.view;
-	}
-	protected synchronized final void setView(AbstractView view) {
-		this.view = view;
-	}
-	protected synchronized final AbstractController getController() {
-		return this.controller;
-	}
-	protected synchronized final void setController(AbstractController controller) {
-		this.controller = controller;
-	}
 
 }

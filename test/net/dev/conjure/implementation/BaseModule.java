@@ -13,37 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure;
+package net.dev.conjure.implementation;
 
-import net.conjure.core.Controller;
-import net.conjure.core.Model;
-import net.conjure.core.View;
-import net.conjure.interfaces.AbstractController;
-import net.conjure.interfaces.AbstractFacade;
-import net.conjure.interfaces.AbstractModel;
-import net.conjure.interfaces.AbstractView;
-import net.conjure.patterns.facade.Facade;
+import net.conjure.ConjureModule;
 
-import com.google.inject.AbstractModule;
-
-public class ConjureModule extends AbstractModule{
+public class BaseModule extends ConjureModule{
 	// /////////////////////////////////////////////////////////////////////////
 	//
-	//	Configuration
+	//	CONFIG
 	//
 	// /////////////////////////////////////////////////////////////////////////
 	@Override
 	protected void configure() {
-		bind(AbstractFacade.class).to(Facade.class);
-		bind(AbstractModel.class).to(Model.class);
-		bind(AbstractView.class).to(View.class);
-		bind(AbstractController.class).to(Controller.class);
+		super.configure();
 	}
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Methods
 	//
-	// /////////////////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////////////////	
 
 }

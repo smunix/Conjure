@@ -13,17 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure.interfaces;
+package net.conjure.core;
 
-public abstract class AbstractFacade {
+import net.conjure.interfaces.AbstractView;
+
+import com.google.inject.Singleton;
+
+@Singleton
+public class View extends AbstractView{
+	// /////////////////////////////////////////////////////////////////////////
+	//
+	//	Static variables
+	//
+	// /////////////////////////////////////////////////////////////////////////
+
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Instance variables
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	protected AbstractModel model;
-	protected AbstractView view;
-	protected AbstractController controller;
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
@@ -42,23 +50,5 @@ public abstract class AbstractFacade {
 	//	Accessors & factories
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	protected synchronized final AbstractModel getModel() {
-		return this.model;
-	}
-	protected synchronized final void setModel(AbstractModel model) {
-		this.model = model;
-	}
-	protected synchronized final AbstractView getView() {
-		return this.view;
-	}
-	protected synchronized final void setView(AbstractView view) {
-		this.view = view;
-	}
-	protected synchronized final AbstractController getController() {
-		return this.controller;
-	}
-	protected synchronized final void setController(AbstractController controller) {
-		this.controller = controller;
-	}
 
 }

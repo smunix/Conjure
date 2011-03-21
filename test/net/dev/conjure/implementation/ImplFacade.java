@@ -13,52 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure.interfaces;
+package net.dev.conjure.implementation;
 
-public abstract class AbstractFacade {
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Instance variables
-	//
-	// /////////////////////////////////////////////////////////////////////////
-	protected AbstractModel model;
-	protected AbstractView view;
-	protected AbstractController controller;
+import net.conjure.interfaces.AbstractController;
+import net.conjure.interfaces.AbstractModel;
+import net.conjure.interfaces.AbstractView;
+import net.conjure.patterns.facade.Facade;
 
+import com.google.inject.Inject;
+
+public class ImplFacade extends Facade {
 	// /////////////////////////////////////////////////////////////////////////
 	//
-	//	Constructors
+	// Instance variables
 	//
 	// /////////////////////////////////////////////////////////////////////////
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
-	//	Methods
+	// Constructors
+	//
+	// /////////////////////////////////////////////////////////////////////////
+	@Inject
+	public ImplFacade(AbstractModel model, AbstractView view,
+			AbstractController controller) {
+		super(model, view, controller);
+		// TODO Auto-generated constructor stub
+	}
+
+	// /////////////////////////////////////////////////////////////////////////
+	//
+	// Methods
 	//
 	// /////////////////////////////////////////////////////////////////////////
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
-	//	Accessors & factories
+	// Accessors & factories
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	protected synchronized final AbstractModel getModel() {
-		return this.model;
-	}
-	protected synchronized final void setModel(AbstractModel model) {
-		this.model = model;
-	}
-	protected synchronized final AbstractView getView() {
-		return this.view;
-	}
-	protected synchronized final void setView(AbstractView view) {
-		this.view = view;
-	}
-	protected synchronized final AbstractController getController() {
-		return this.controller;
-	}
-	protected synchronized final void setController(AbstractController controller) {
-		this.controller = controller;
-	}
 
 }

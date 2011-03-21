@@ -15,15 +15,17 @@
  */
 package net.conjure.interfaces;
 
-import com.google.inject.Singleton;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-@Singleton
 public abstract class AbstractController {
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Static variables
 	//
 	// /////////////////////////////////////////////////////////////////////////
+	protected HashMap<String, AbstractEvent> events;
+	protected HashMap<Observable, ArrayList<AbstractObserver>> observers;
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
@@ -48,5 +50,19 @@ public abstract class AbstractController {
 	//	Accessors & factories
 	//
 	// /////////////////////////////////////////////////////////////////////////
+	protected synchronized final HashMap<String, AbstractEvent> getEvents() {
+		return events;
+	}
+	protected synchronized final void setEvents(
+			HashMap<String, AbstractEvent> events) {
+		this.events = events;
+	}
+	protected synchronized final HashMap<Observable, ArrayList<AbstractObserver>> getObservers() {
+		return observers;
+	}
+	protected synchronized final void setObservers(
+			HashMap<Observable, ArrayList<AbstractObserver>> observers) {
+		this.observers = observers;
+	}
 
 }
