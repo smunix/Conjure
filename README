@@ -1,9 +1,1 @@
 README for Conjure MVC
-
-READ THE LEGAL NOTICE!
-
-Dependencies in the code are:
-Google Guice  =>2.0     (with or without AOP. I use the one with because it 
-                         gives better messages)
-
-log4j         =>1.2.16
