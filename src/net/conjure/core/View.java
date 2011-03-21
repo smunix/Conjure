@@ -15,7 +15,7 @@
  */
 package net.conjure.core;
 
-import net.conjure.interfaces.AbstractView;
+import net.conjure.abstracts.AbstractView;
 
 import com.google.inject.Singleton;
 

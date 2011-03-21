@@ -13,56 +13,61 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure.core;
+package net.conjure.abstracts;
 
 import java.util.HashMap;
 
-import net.conjure.abstracts.AbstractController;
-import net.conjure.abstracts.AbstractEvent;
-import net.conjure.abstracts.AbstractModel;
-import net.conjure.abstracts.AbstractView;
+public abstract class AbstractController {
+	// /////////////////////////////////////////////////////////////////////////
+	//
+	// Instance variables
+	//
+	// /////////////////////////////////////////////////////////////////////////
+	protected HashMap<String, AbstractEvent> events;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-
-@Singleton
-public class Controller extends AbstractController{
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Static variables
-	//
-	// /////////////////////////////////////////////////////////////////////////
-
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Instance variables
-	//
-	// /////////////////////////////////////////////////////////////////////////
+	/**
+	 * Reference to <code>Model</code>.
+	 */
+	protected AbstractModel model;
+	/**
+	 * Reference to <code>View</code>.
+	 */
+	protected AbstractView view;
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
-	//	Constructors
+	// Methods
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	@Inject
-	public Controller(AbstractModel model, AbstractView view) {
-		
-		this.setEvents(new HashMap<String, AbstractEvent>());
-		
-		this.setModel(model);
-		this.setView(view);
+
+	// /////////////////////////////////////////////////////////////////////////
+	//
+	// Accessors & factories
+	//
+	// /////////////////////////////////////////////////////////////////////////
+	protected synchronized final HashMap<String, AbstractEvent> getEvents() {
+		return this.events;
 	}
 
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Methods
-	//
-	// /////////////////////////////////////////////////////////////////////////
+	protected synchronized final void setEvents(
+			HashMap<String, AbstractEvent> events) {
+		this.events = events;
+	}
 
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Accessors & factories
-	//
-	// /////////////////////////////////////////////////////////////////////////
+	protected synchronized final AbstractModel getModel() {
+		return this.model;
+	}
+
+	protected synchronized final void setModel(AbstractModel model) {
+		this.model = model;
+	}
+
+	protected synchronized final AbstractView getView() {
+		return this.view;
+	}
+
+	protected synchronized final void setView(AbstractView view) {
+		this.view = view;
+	}
 
 }

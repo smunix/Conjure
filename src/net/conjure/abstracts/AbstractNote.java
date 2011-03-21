@@ -13,45 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure.core;
+package net.conjure.abstracts;
 
-import java.util.HashMap;
+import net.conjure.interfaces.Notable;
 
-import net.conjure.abstracts.AbstractController;
-import net.conjure.abstracts.AbstractEvent;
-import net.conjure.abstracts.AbstractModel;
-import net.conjure.abstracts.AbstractView;
-
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-
-@Singleton
-public class Controller extends AbstractController{
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Static variables
-	//
-	// /////////////////////////////////////////////////////////////////////////
-
+public abstract class AbstractNote implements Notable{
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Instance variables
 	//
 	// /////////////////////////////////////////////////////////////////////////
-
+	public String name;
+	public Object contents;
+	public String args;
+	
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Constructors
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	@Inject
-	public Controller(AbstractModel model, AbstractView view) {
-		
-		this.setEvents(new HashMap<String, AbstractEvent>());
-		
-		this.setModel(model);
-		this.setView(view);
-	}
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
@@ -64,5 +44,23 @@ public class Controller extends AbstractController{
 	//	Accessors & factories
 	//
 	// /////////////////////////////////////////////////////////////////////////
+	protected synchronized final String getName() {
+		return this.name;
+	}
+	protected synchronized final void setName(String name) {
+		this.name = name;
+	}
+	protected synchronized final Object getContents() {
+		return this.contents;
+	}
+	protected synchronized final void setContents(Object contents) {
+		this.contents = contents;
+	}
+	protected synchronized final String getArgs() {
+		return this.args;
+	}
+	protected synchronized final void setArgs(String args) {
+		this.args = args;
+	}
 
 }

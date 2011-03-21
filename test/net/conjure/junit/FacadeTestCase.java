@@ -17,7 +17,7 @@ package net.conjure.junit;
 
 import junit.framework.Assert;
 import net.conjure.ConjureModule;
-import net.conjure.interfaces.AbstractFacade;
+import net.conjure.abstracts.AbstractFacade;
 import net.conjure.patterns.facade.Facade;
 
 import org.apache.log4j.BasicConfigurator;

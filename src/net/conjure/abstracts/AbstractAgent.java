@@ -13,26 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure.core;
+package net.conjure.abstracts;
 
-import java.util.HashMap;
-
-import net.conjure.abstracts.AbstractController;
-import net.conjure.abstracts.AbstractEvent;
-import net.conjure.abstracts.AbstractModel;
-import net.conjure.abstracts.AbstractView;
-
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-
-@Singleton
-public class Controller extends AbstractController{
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Static variables
-	//
-	// /////////////////////////////////////////////////////////////////////////
-
+public abstract class AbstractAgent {
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Instance variables
@@ -44,14 +27,6 @@ public class Controller extends AbstractController{
 	//	Constructors
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	@Inject
-	public Controller(AbstractModel model, AbstractView view) {
-		
-		this.setEvents(new HashMap<String, AbstractEvent>());
-		
-		this.setModel(model);
-		this.setView(view);
-	}
 
 	// /////////////////////////////////////////////////////////////////////////
 	//

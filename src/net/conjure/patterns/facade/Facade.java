@@ -15,10 +15,10 @@
  */
 package net.conjure.patterns.facade;
 
-import net.conjure.interfaces.AbstractController;
-import net.conjure.interfaces.AbstractFacade;
-import net.conjure.interfaces.AbstractModel;
-import net.conjure.interfaces.AbstractView;
+import net.conjure.abstracts.AbstractController;
+import net.conjure.abstracts.AbstractFacade;
+import net.conjure.abstracts.AbstractModel;
+import net.conjure.abstracts.AbstractView;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;

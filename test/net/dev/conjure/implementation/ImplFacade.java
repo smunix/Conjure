@@ -15,9 +15,9 @@
  */
 package net.dev.conjure.implementation;
 
-import net.conjure.interfaces.AbstractController;
-import net.conjure.interfaces.AbstractModel;
-import net.conjure.interfaces.AbstractView;
+import net.conjure.abstracts.AbstractController;
+import net.conjure.abstracts.AbstractModel;
+import net.conjure.abstracts.AbstractView;
 import net.conjure.patterns.facade.Facade;
 
 import com.google.inject.Inject;

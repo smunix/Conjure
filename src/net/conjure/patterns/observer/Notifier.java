@@ -13,55 +13,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure.core;
+package net.conjure.patterns.observer;
 
-import java.util.HashMap;
+import net.conjure.abstracts.AbstractNotifier;
+import net.conjure.abstracts.AbstractObserver;
+import net.conjure.interfaces.Observable;
 
-import net.conjure.abstracts.AbstractController;
-import net.conjure.abstracts.AbstractEvent;
-import net.conjure.abstracts.AbstractModel;
-import net.conjure.abstracts.AbstractView;
+public class Notifier extends AbstractNotifier implements Observable {
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-
-@Singleton
-public class Controller extends AbstractController{
 	// /////////////////////////////////////////////////////////////////////////
 	//
-	//	Static variables
+	// Instance variables
 	//
 	// /////////////////////////////////////////////////////////////////////////
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
-	//	Instance variables
+	// Methods
 	//
 	// /////////////////////////////////////////////////////////////////////////
-
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Constructors
-	//
-	// /////////////////////////////////////////////////////////////////////////
-	@Inject
-	public Controller(AbstractModel model, AbstractView view) {
-		
-		this.setEvents(new HashMap<String, AbstractEvent>());
-		
-		this.setModel(model);
-		this.setView(view);
+	@Override
+	public void notifyObservers(Observable notifier) {
+		if (this.getObservers().containsKey(notifier)) {
+			for (AbstractObserver observer : this.getObservers().get(notifier)) {
+				observer.observableChanged(notifier);
+			}
+		}
 	}
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
-	//	Methods
-	//
-	// /////////////////////////////////////////////////////////////////////////
-
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Accessors & factories
+	// Accessors & factories
 	//
 	// /////////////////////////////////////////////////////////////////////////
 

@@ -13,45 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure.core;
+package net.conjure.abstracts;
 
 import java.util.HashMap;
 
-import net.conjure.abstracts.AbstractController;
-import net.conjure.abstracts.AbstractEvent;
-import net.conjure.abstracts.AbstractModel;
-import net.conjure.abstracts.AbstractView;
+import net.conjure.interfaces.Representable;
 
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-
-@Singleton
-public class Controller extends AbstractController{
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Static variables
-	//
-	// /////////////////////////////////////////////////////////////////////////
-
+public abstract class AbstractView {
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Instance variables
 	//
 	// /////////////////////////////////////////////////////////////////////////
+	protected HashMap<Representable, AbstractAgent> agents;
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Constructors
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	@Inject
-	public Controller(AbstractModel model, AbstractView view) {
-		
-		this.setEvents(new HashMap<String, AbstractEvent>());
-		
-		this.setModel(model);
-		this.setView(view);
-	}
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
@@ -64,5 +44,13 @@ public class Controller extends AbstractController{
 	//	Accessors & factories
 	//
 	// /////////////////////////////////////////////////////////////////////////
+	protected synchronized final HashMap<Representable, AbstractAgent> getAgents() {
+		return this.agents;
+	}
+
+	protected synchronized final void setAgents(
+			HashMap<Representable, AbstractAgent> agents) {
+		this.agents = agents;
+	}
 
 }

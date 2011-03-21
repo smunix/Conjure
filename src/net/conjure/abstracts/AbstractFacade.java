@@ -13,45 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.conjure.core;
+package net.conjure.abstracts;
 
-import java.util.HashMap;
-
-import net.conjure.abstracts.AbstractController;
-import net.conjure.abstracts.AbstractEvent;
-import net.conjure.abstracts.AbstractModel;
-import net.conjure.abstracts.AbstractView;
-
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
-
-@Singleton
-public class Controller extends AbstractController{
-	// /////////////////////////////////////////////////////////////////////////
-	//
-	//	Static variables
-	//
-	// /////////////////////////////////////////////////////////////////////////
-
+public abstract class AbstractFacade {
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Instance variables
 	//
 	// /////////////////////////////////////////////////////////////////////////
+	protected AbstractModel model;
+	protected AbstractView view;
+	protected AbstractController controller;
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
 	//	Constructors
 	//
 	// /////////////////////////////////////////////////////////////////////////
-	@Inject
-	public Controller(AbstractModel model, AbstractView view) {
-		
-		this.setEvents(new HashMap<String, AbstractEvent>());
-		
-		this.setModel(model);
-		this.setView(view);
-	}
 
 	// /////////////////////////////////////////////////////////////////////////
 	//
@@ -64,5 +42,23 @@ public class Controller extends AbstractController{
 	//	Accessors & factories
 	//
 	// /////////////////////////////////////////////////////////////////////////
+	protected synchronized final AbstractModel getModel() {
+		return this.model;
+	}
+	protected synchronized final void setModel(AbstractModel model) {
+		this.model = model;
+	}
+	protected synchronized final AbstractView getView() {
+		return this.view;
+	}
+	protected synchronized final void setView(AbstractView view) {
+		this.view = view;
+	}
+	protected synchronized final AbstractController getController() {
+		return this.controller;
+	}
+	protected synchronized final void setController(AbstractController controller) {
+		this.controller = controller;
+	}
 
 }

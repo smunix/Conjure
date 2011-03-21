@@ -15,13 +15,13 @@
  */
 package net.conjure;
 
+import net.conjure.abstracts.AbstractController;
+import net.conjure.abstracts.AbstractFacade;
+import net.conjure.abstracts.AbstractModel;
+import net.conjure.abstracts.AbstractView;
 import net.conjure.core.Controller;
 import net.conjure.core.Model;
 import net.conjure.core.View;
-import net.conjure.interfaces.AbstractController;
-import net.conjure.interfaces.AbstractFacade;
-import net.conjure.interfaces.AbstractModel;
-import net.conjure.interfaces.AbstractView;
 import net.conjure.patterns.facade.Facade;
 
 import com.google.inject.AbstractModule;
