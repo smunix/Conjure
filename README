@@ -1,1 +1,8 @@
 README for Conjure MVC
+
+deps for code:
+
+Google Guice =>2.0 (w/ or w/o AOP, both works)
+
+NOTE:
+Google is not a part of this project, nor does it endorse it in any way.
