@@ -1,0 +1,28 @@
+Files from the PureMVC Java port that have been modified:
+
+ICommand.java
+IController.java
+IFacade.java
+IFuction.java
+IMediator.java
+IModel.java
+INotification.java
+INotifier.java
+IObserver.java
+IProxy.java
+IView.java
+MacroCommand.java
+SimpleCommand.java
+Facade.java
+Mediator.java
+Notification.java
+Notifier.java
+Observer.java
+Proxy.java
+Controller.java
+Model.java
+View.java
+
+The files have been modified by:
+  Björn Roberg (bjorn.roberg@gmail.com)
+the changes are not in any way supported or endorsed by the original author(s).

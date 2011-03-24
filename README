@@ -6,6 +6,13 @@ Conjure MVC aims to be a singleton MVC framework, which has the following:
   -lightweight
   -easy to learn and use
 
+These are the restrictions when creating this framework:
+Always use a:
+  -constructor injection
+  -setter injection
+  -interface injection
+  -contextualized lookup
+
 deps for code:
 
 Google Guice
