@@ -1,25 +1,8 @@
 README for Conjure MVC
 
 Conjure MVC aims to be a singleton MVC framework, which has the following:
-  -SOLID <a href="http://en.wikipedia.org/wiki/Solid_(object-oriented_design)"/>
+  -SOLID - http://en.wikipedia.org/wiki/Solid_(object-oriented_design)
   -thread-safe
   -lightweight
   -easy to learn and use
 
-These are the restrictions when creating this framework:
-Always use a:
-  -constructor injection
-  -setter injection
-  -interface injection
-  -contextualized lookup
-
-deps for code:
-
-Google Guice
-  =>2.0 (w/ or w/o AOP, both works)
-
-log4j
-  =>1.2.16
-
-NOTE:
-Google is not a part of this project, nor does it endorse it in any way.
