@@ -12,12 +12,11 @@
 <v t="roobie.20110513155345.1290" a="E"><vh>Conjure</vh>
 <v t="roobie.20110513155345.1291"><vh>@file README</vh></v>
 <v t="roobie.20110513155345.1293"><vh>@file AUTHORS</vh></v>
+<v t="roobie.20110516180703.1361"><vh>@file build.sh</vh></v>
 <v t="roobie.20110513165506.6374"><vh>@file dsss.conf</vh></v>
 <v t="roobie.20110513155345.1294" a="E"><vh>src</vh>
+<v t="roobie.20110516104530.1325" a="E"><vh>@path conjure</vh>
 <v t="roobie.20110513155345.1304"><vh>@file conjure.d</vh></v>
-<v t="roobie.20110513165506.6394" a="E"><vh>@path interfaces</vh>
-<v t="roobie.20110513165506.6395"><vh>@file ifacade.d</vh></v>
-</v>
 <v t="roobie.20110513155345.1309" a="E"><vh>@path core</vh>
 <v t="roobie.20110513155345.1314"><vh>@file model.d</vh></v>
 <v t="roobie.20110513155345.1315"><vh>@file view.d</vh></v>
@@ -25,11 +24,27 @@
 </v>
 <v t="roobie.20110513155345.1310" a="E"><vh>@path patterns</vh>
 <v t="roobie.20110513155345.1312"><vh>@file facade.d</vh></v>
+<v t="roobie.20110516180703.1360"><vh>@file observer.d</vh></v>
+<v t="roobie.20110516180703.1362"><vh>@file strategy.d</vh></v>
+<v t="roobie.20110516104530.1328"><vh>@file proxy.d</vh></v>
+<v t="roobie.20110516104530.1330"><vh>@file agent.d</vh></v>
+</v>
+</v>
+<v t="roobie.20110516104530.1332" a="E"><vh>@path demo</vh>
+<v t="roobie.20110516104530.1333"><vh>@file dsss.conf</vh></v>
+<v t="roobie.20110516104530.1334"><vh>@file demo_facade.d</vh></v>
+<v t="roobie.20110516104530.1335" a="E"><vh>@path model</vh>
+<v t="roobie.20110516104530.1339"><vh>model_objects</vh></v>
+</v>
+<v t="roobie.20110516104530.1336" a="E"><vh>@path view</vh>
+<v t="roobie.20110516180703.1358"><vh>@file consolemediator.d</vh></v>
+<v t="roobie.20110516104530.1338" a="E"><vh>@path components</vh>
+<v t="roobie.20110516104530.1342"><vh>console.d</vh></v>
+</v>
+</v>
+<v t="roobie.20110516104530.1337"><vh>@path controller</vh></v>
 </v>
 <v t="roobie.20110513155345.1308"><vh>notes</vh></v>
-</v>
-<v t="roobie.20110513155345.1320"><vh>demo</vh>
-<v t="roobie.20110513155345.1321"><vh>notes</vh></v>
 </v>
 <v t="roobie.20110513155345.1295"><vh>lib</vh>
 <v t="roobie.20110513155345.1305"><vh>notes</vh></v>
@@ -43,15 +58,10 @@
 <v t="roobie.20110513155345.1298"><vh>doc</vh>
 <v t="roobie.20110513155345.1307"><vh>notes</vh></v>
 </v>
-<v t="roobie.20110513165506.6396"><vh>includes</vh></v>
-<v t="roobie.20110513165506.6387"><vh>profiles</vh>
-<v t="roobie.20110513165506.6388"><vh>@file ldc-conjure</vh></v>
-</v>
 </v>
 </vnodes>
 <tnodes>
-<t tx="roobie.20110513155345.1290">
-@language plain
+<t tx="roobie.20110513155345.1290">@language plain
 @tabwidth -4
 @pagewidth 80</t>
 <t tx="roobie.20110513155345.1294">@path src
@@ -70,12 +80,51 @@
 <t tx="roobie.20110513155345.1308"></t>
 <t tx="roobie.20110513155345.1309"></t>
 <t tx="roobie.20110513155345.1310"></t>
-<t tx="roobie.20110513155345.1320">@path demo
-</t>
-<t tx="roobie.20110513155345.1321"></t>
-<t tx="roobie.20110513165506.6387">@path profiles
-</t>
-<t tx="roobie.20110513165506.6394"></t>
-<t tx="roobie.20110513165506.6396">@path includes</t>
+<t tx="roobie.20110516104530.1325"></t>
+<t tx="roobie.20110516104530.1332"></t>
+<t tx="roobie.20110516104530.1335"></t>
+<t tx="roobie.20110516104530.1336"></t>
+<t tx="roobie.20110516104530.1337"></t>
+<t tx="roobie.20110516104530.1338"></t>
+<t tx="roobie.20110516104530.1339"></t>
+<t tx="roobie.20110516104530.1342">module demo.view.components.console;
+
+import tango.io.Console;
+import tango.util.log.Log;
+import tango.util.log.AppendConsole;
+import tango.text.Regex;
+
+import demo.view.consoleagent;
+
+
+class Console
+{
+    private final ConsoleAgent agent;
+    
+    this(ConsoleAgent ca)
+    {
+        this.agent = ca;
+        Cout("Hello. This is a demo CLI app for Conjure MVC...").newline;
+    }
+    
+    void run()
+    {
+        char[] response = "";
+        auto regex = new Regex("[E|e][X|x][I|i][T|t]");
+        
+        while (regex.test(response) != true)
+        {
+            Cout("Please let me calculate an integer addition or subtraction (type exit to quit)").newline;
+    
+            response = Cin.get();
+            if (regex.test(response) != true)
+            {
+                this.agent.exec(response);
+            }
+        }
+        
+        Cout("Bye ...").newline;
+    }
+}</t>
 </tnodes>
 </leo_file>
