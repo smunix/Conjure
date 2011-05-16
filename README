@@ -1,3 +1,5 @@
+#@+leo-ver=5-thin
+#@+node:roobie.20110513155345.1291: * @file README
 README for Conjure MVC
 
 Conjure MVC aims to be a singleton MVC framework, which has the following:
@@ -5,4 +7,4 @@ Conjure MVC aims to be a singleton MVC framework, which has the following:
   -thread-safe
   -lightweight
   -easy to learn and use
-
+#@-leo
