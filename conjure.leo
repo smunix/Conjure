@@ -28,21 +28,27 @@
 <v t="roobie.20110516180703.1362"><vh>@file strategy.d</vh></v>
 <v t="roobie.20110516104530.1328"><vh>@file proxy.d</vh></v>
 <v t="roobie.20110516104530.1330"><vh>@file agent.d</vh></v>
+<v t="roobie.20110516180703.1363"><vh>@file action.d</vh></v>
+<v t="roobie.20110516180703.1364"><vh>@file message.d</vh></v>
 </v>
 </v>
 <v t="roobie.20110516104530.1332" a="E"><vh>@path demo</vh>
 <v t="roobie.20110516104530.1333"><vh>@file dsss.conf</vh></v>
-<v t="roobie.20110516104530.1334"><vh>@file demo_facade.d</vh></v>
+<v t="roobie.20110516104530.1334"><vh>@file demofacade.d</vh></v>
 <v t="roobie.20110516104530.1335" a="E"><vh>@path model</vh>
-<v t="roobie.20110516104530.1339"><vh>model_objects</vh></v>
+<v t="roobie.20110516104530.1339"><vh>@path model_objects</vh></v>
+<v t="roobie.20110517013110.1349"><vh>@file commandproxy.d</vh></v>
 </v>
 <v t="roobie.20110516104530.1336" a="E"><vh>@path view</vh>
-<v t="roobie.20110516180703.1358"><vh>@file consolemediator.d</vh></v>
+<v t="roobie.20110516180703.1358"><vh>@file consoleagent.d</vh></v>
 <v t="roobie.20110516104530.1338" a="E"><vh>@path components</vh>
-<v t="roobie.20110516104530.1342"><vh>console.d</vh></v>
+<v t="roobie.20110516104530.1342"><vh>@file console.d</vh></v>
 </v>
 </v>
-<v t="roobie.20110516104530.1337"><vh>@path controller</vh></v>
+<v t="roobie.20110516104530.1337" a="E"><vh>@path controller</vh>
+<v t="roobie.20110517013110.1350"><vh>@file addaction.d</vh></v>
+<v t="roobie.20110517013110.1351"><vh>@file subtractaction.d</vh></v>
+</v>
 </v>
 <v t="roobie.20110513155345.1308"><vh>notes</vh></v>
 </v>
@@ -55,7 +61,7 @@
 <v t="roobie.20110513155345.1297"><vh>legal</vh>
 <v t="roobie.20110513155345.1303"><vh>@file LICENSE</vh></v>
 </v>
-<v t="roobie.20110513155345.1298"><vh>doc</vh>
+<v t="roobie.20110513155345.1298"><vh>docs</vh>
 <v t="roobie.20110513155345.1307"><vh>notes</vh></v>
 </v>
 </v>
@@ -72,7 +78,7 @@
 </t>
 <t tx="roobie.20110513155345.1297">@path legal
 </t>
-<t tx="roobie.20110513155345.1298">@path doc
+<t tx="roobie.20110513155345.1298">@path docs
 </t>
 <t tx="roobie.20110513155345.1305"></t>
 <t tx="roobie.20110513155345.1306"></t>
@@ -87,44 +93,5 @@
 <t tx="roobie.20110516104530.1337"></t>
 <t tx="roobie.20110516104530.1338"></t>
 <t tx="roobie.20110516104530.1339"></t>
-<t tx="roobie.20110516104530.1342">module demo.view.components.console;
-
-import tango.io.Console;
-import tango.util.log.Log;
-import tango.util.log.AppendConsole;
-import tango.text.Regex;
-
-import demo.view.consoleagent;
-
-
-class Console
-{
-    private final ConsoleAgent agent;
-    
-    this(ConsoleAgent ca)
-    {
-        this.agent = ca;
-        Cout("Hello. This is a demo CLI app for Conjure MVC...").newline;
-    }
-    
-    void run()
-    {
-        char[] response = "";
-        auto regex = new Regex("[E|e][X|x][I|i][T|t]");
-        
-        while (regex.test(response) != true)
-        {
-            Cout("Please let me calculate an integer addition or subtraction (type exit to quit)").newline;
-    
-            response = Cin.get();
-            if (regex.test(response) != true)
-            {
-                this.agent.exec(response);
-            }
-        }
-        
-        Cout("Bye ...").newline;
-    }
-}</t>
 </tnodes>
 </leo_file>
