@@ -1,18 +1,32 @@
-#!/bin/sh
+#!/bin/bash
 #@+leo-ver=5-thin
 #@+node:roobie.20110516180703.1361: * @file build.sh
 #@@first
 
 #@@language shell
 
-dsss clean && dsss build -unittest
+if [ "$1" = "-unittest" ]
+then
+    rm -f bin/conjure /bin/conjure_demo
+    dsss clean && dsss build -unittest
 
-cd src/demo
+    cd src/demo
 
-dsss clean && dsss build -unittest
+    dsss clean && dsss build -unittest
 
-cd ../../
+    cd ../../
 
-./bin/conjure && ./bin/conjure_demo
+    ./bin/conjure && ./bin/conjure_demo
 
+else
+    rm -f bin/conjure /bin/conjure_demo
+    dsss clean && dsss build -unittest
+
+    cd src/demo
+
+    dsss clean && dsss build -unittest
+
+    cd ../../
+
+fi
 #@-leo

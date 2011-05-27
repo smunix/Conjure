@@ -1,5 +1,7 @@
 #@+leo-ver=5-thin
-#@+node:roobie.20110513155345.1291: * @file README
+#@+node:roobie.20110526000635.1355: * @file README.textile
+h1. Conjure MVC
+
 This is a simple MVC framework written in D. The goal is to not use any library (the devel-version uses tango for output) and to be easy to use in small to medium apps.
 
 It compiles with LDC (DMD should not be a problem, but I dunno about GDC)

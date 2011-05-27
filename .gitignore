@@ -2,3 +2,6 @@
 dsss_*/
 bin/
 dsss.last
+obj/
+*.depend
+
